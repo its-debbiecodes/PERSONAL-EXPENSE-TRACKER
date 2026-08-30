@@ -38,4 +38,11 @@ def view_expenses():
         break
     print("hmm.. cant seem to find expense in your tracker")
 
-
+def calculate_expenses():
+    total_expense = 0
+    for expense in expense_tracker:
+        total_expense += expense["Price"]
+    if  total_expense > 0:
+        print(f"Your total expenses is: {total_expense}")
+    else:
+        print("You have no expenses yet, try adding. We won't judge ;)")
