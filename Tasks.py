@@ -69,3 +69,14 @@ def delete_expenses():
 
     with open("expense_tracker.json", "w") as file:
         json.dump(expense_tracker,file, indent=2)
+
+def valid_input (prompt:str)-> int:
+    while True:
+        try:
+            price= int(input(prompt))
+            if 0 <= price <= 100000:
+                return price
+            else:
+                print(f"{prompt} is not a valid price, might want to try again.")
+        except ValueError:
+            print("Not a valid number, try 0 to 100000")
