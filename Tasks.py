@@ -58,3 +58,14 @@ def search_expenses():
            return expense
    print(f"cant seem to find {category_search} in your tracker")
    return None
+
+def delete_expenses():
+    expense_lookup=find_expenses()
+    if expense_lookup:
+        expense_tracker.remove(expense_lookup)
+        print(f"{expense_lookup} has been removed from the expense tracker")
+    else:
+        print(f"Cant seem to find {expense_lookup} in your tracker")
+
+    with open("expense_tracker.json", "w") as file:
+        json.dump(expense_tracker,file, indent=2)
