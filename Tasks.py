@@ -8,7 +8,7 @@ def add_expenses():
         date= datetime.datetime.now()
 
         expense_tracker.append({
-            "description": description, "price": price, "category": category, "date": date
+            "Description": description, "Price": price, "Category": category, "Date": date
         })
         print(f"{description}, has been added to the expense tracker")
         end_input= input("Do you want to add another expense? (y/n): ")
@@ -22,5 +22,20 @@ def add_expenses():
         json.dump(expense_tracker,file, indent=4)
 
 def find_expenses():
-    expense_lookup=input("Enter expense: ").title()
+    expense_lookup=input("Enter expense description: ").title()
     for expense in expense_tracker:
+        if expense_lookup == expense["description"]:
+            return expense
+    print(f"cant seem to find {expense_lookup} in your tracker")
+    return expense_lookup
+
+def view_expenses():
+    print("-" * 60)
+    print(f"{'description':<18} {'price':<15} {'category':<18} {'date':<15} ")
+    print("-" * 60)
+    for expense in expense_tracker:
+        print(f"{expense['description']:<18} £{expense['price']:<15} {expense['category']:<18} {expense['date']}")
+        break
+    print("hmm.. cant seem to find expense in your tracker")
+
+
